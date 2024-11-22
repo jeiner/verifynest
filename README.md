@@ -129,4 +129,8 @@ $ nest  g service auth/services/auth
 # librerias a instalar para JWT 
 npm install @nestjs/jwt @nestjs/passport passport passport-jwt
 
+# bilioteca para realizar request a apis
+npm install @nestjs/axios rxjs
+
+
 

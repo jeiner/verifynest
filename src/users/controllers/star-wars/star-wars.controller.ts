@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Delete, Param, Put, Patch } from "@nestjs/common";
+import { Controller, Get, Post, Body, Delete, Param, Put, Patch, Query, HttpException } from "@nestjs/common";
 import { StarWarsService } from "../../services/star-wars/star-wars.service";
 import { CreateUserDto, UpdateUserDto } from "../../dto/user.dto";
 
@@ -8,9 +8,22 @@ export class StarWarsController {
   constructor(private starWarsService: StarWarsService) {
   }
 
-  @Get()
-  listAllUsers(){
-    return this.starWarsService.getAllUsers();
+  @Get('people')
+  listAllUsers(
+    @Query('page') page: number,  // Parámetro `page`
+  ){
+    if(!page) throw new HttpException('El parametro page es obligtorio', 404)
+    const params = `?page=${page}`
+    return this.starWarsService.getPeople(params);
+  }
+
+  @Get('planets')
+  listAllPlanetas(
+    @Query('page') page: number,  // Parámetro `page`
+  ){
+    if(!page) throw new HttpException('El parametro page es obligtorio', 400  )
+    const params = `?page=${page}`
+    return this.starWarsService.getAllPlanets(params);
   }
 
   @Post()
