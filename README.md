@@ -126,3 +126,7 @@ $ nest generate controller auth/controllers/auth
 # generar un servicio 
 $ nest  g service auth/services/auth
 
+# librerias a instalar para JWT 
+npm install @nestjs/jwt @nestjs/passport passport passport-jwt
+
+
