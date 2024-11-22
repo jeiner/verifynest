@@ -100,6 +100,8 @@ Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
 
 
 
+
+
 ## Iniciar el Servidor
 npm run start:dev
 
@@ -109,4 +111,18 @@ npm run build
 ## Para producción
 npm start
 node dist/main.js
+
+
+
+## Compando propios de nest cli
+
+```bash
+#  generar modulo
+$  nest generate module auth
+
+# generar controlador
+$ nest generate controller auth/controllers/auth
+
+# generar un servicio 
+$ nest  g service auth/services/auth
 
