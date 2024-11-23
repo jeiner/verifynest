@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { HttpException, Injectable } from "@nestjs/common";
 import { User, UserStatus } from "./../../entities/users";
 import { v4 as uuidv4 } from "uuid";
 import { UpdateUserDto } from "../../dto/user.dto";
@@ -9,6 +9,7 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { Repository, DataSource } from "typeorm";
 import { StarWarsEntity } from "../../entities/startwars-people.entity";
 import { PlanetEntity } from "../../entities/planets.entity";
+import { CreateStarWarsDto } from "../../dto/create-starwars.dto";
 
 @Injectable()
 export class StarWarsService {
@@ -121,7 +122,25 @@ export class StarWarsService {
     query.skip(start).take(length);
 
     return await query.getMany();
+  }
 
+
+  async createStarWars(createStarWarsDto: CreateStarWarsDto): Promise<StarWarsEntity> {
+    // Buscamos el planeta usando el ID proporcionado en el DTO.
+    const planet = await this.planetRepository.findOne({
+      where: { id: createStarWarsDto.planetId },
+    });
+    // Si no encontramos el planeta, lanzamos un error.
+    if (!planet) {
+      throw new HttpException('El valor planetId no existe', 400  )
+    }
+    // Creamos una nueva instancia de StarWarsEntity con los datos proporcionados.
+    const newCharacter = this.starWarsRepository.create({
+      ...createStarWarsDto,
+      planet,
+    });
+    // Guardamos el personaje en la base de datos y lo retornamos.
+    return this.starWarsRepository.save(newCharacter);
   }
 
 

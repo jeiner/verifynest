@@ -1,6 +1,8 @@
 import { Controller, Get, Post, Body, Delete, Param, Put, Patch, Query, HttpException } from "@nestjs/common";
 import { StarWarsService } from "../../services/star-wars/star-wars.service";
 import { CreateUserDto, UpdateUserDto } from "../../dto/user.dto";
+import { CreateStarWarsDto } from "../../dto/create-starwars.dto";
+import { StarWarsEntity } from "../../entities/startwars-people.entity";
 
 @Controller('star-wars')
 export class StarWarsController {
@@ -57,19 +59,25 @@ export class StarWarsController {
     }
   }
 
+
+  @Post('almacenar')
+  async create(@Body() createStarWarsDto: CreateStarWarsDto): Promise<StarWarsEntity> {
+    // Llamamos al servicio para crear el nuevo personaje con los datos proporcionados en el cuerpo de la solicitud.
+    return this.starWarsService.createStarWars(createStarWarsDto);
+  }
+
+
 /*
   @Post()
   createUser(@Body() newUser: CreateUserDto){
     console.log(newUser)
     return this.starWarsService.createUser(newUser.title, newUser.description)
   }
-
   @Delete(':id')
   deleteUser(@Param('id') id : string){
     this.starWarsService.DeleteUser(id)
     return {'message': 'eliminado correctamente'}
   }
-
   @Patch(':id')
   updateUser(@Param('id') id : string, @Body() updateFields: UpdateUserDto) {
     return this.starWarsService.updateUser(id, updateFields)
