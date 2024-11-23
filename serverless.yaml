@@ -1,0 +1,46 @@
+service: starwars
+
+useDotenv: true
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: us-east-1
+  profile: jcastrov
+  environment:
+    JWT_SECRET: ${env:JWT_SECRET}
+    JWT_EXPIRATION_TIME: ${env:JWT_EXPIRES_IN}
+    DB_HOST: ${env:DB_HOST}
+    DB_PORT: ${env:DB_PORT}
+    DB_USERNAME: ${env:DB_USERNAME}
+    DB_DATABASE: ${env:DB_DATABASE}
+
+functions:
+  main:
+    handler: dist/serverless.handler
+    maximumEventAge: 300
+    maximumRetryAttempts: 2
+    timeout: 300
+    package:
+      include:
+        - dist/**
+    events:
+      - http:
+          method: ANY
+          path: /
+      - http:
+          method: ANY
+          path: '{proxy+}'
+package:
+  individually: true
+  excludeDevDependencies: true
+  exclude:
+    - node_modules/**
+    - tests/**
+    - .vscode/**
+    - .env
+    - README.md
+    - "*.log"
