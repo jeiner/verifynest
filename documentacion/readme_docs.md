@@ -37,3 +37,8 @@
         ANY - https://779ljk89s9.execute-api.us-east-1.amazonaws.com/dev/{proxy+}
 # 3.- Se comparte modelo de base de datos
     - Adjunto Archivo dentro de la carpeta documentos
+
+
+# 4.- Consideraciones:
+    - La rama principal desplegada en lambda es main
+
