@@ -1,8 +1,21 @@
-import { Controller, Get, Post, Body, Delete, Param, Put, Patch, Query, HttpException } from "@nestjs/common";
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Delete,
+  Param,
+  Put,
+  Patch,
+  Query,
+  HttpException,
+  UseGuards
+} from "@nestjs/common";
 import { StarWarsService } from "../../services/star-wars/star-wars.service";
 import { CreateUserDto, UpdateUserDto } from "../../dto/user.dto";
 import { CreateStarWarsDto } from "../../dto/create-starwars.dto";
 import { StarWarsEntity } from "../../entities/startwars-people.entity";
+import { JwtAuthGuard } from "../../../auth/guards/jwt.guard";
 
 @Controller('star-wars')
 export class StarWarsController {
