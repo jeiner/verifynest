@@ -29,11 +29,11 @@
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
 
-1.- Se comparte la colleccion 
+# 1.- Se comparte la colleccion 
     - Adjunto Archivo dentro de la carpeta documentos
-2.- Se comparte los endpoints desplegados mediante aws serverless framework
+# 2.- Se comparte los endpoints desplegados mediante aws serverless framework
     endpoints:
         ANY - https://779ljk89s9.execute-api.us-east-1.amazonaws.com/dev/
         ANY - https://779ljk89s9.execute-api.us-east-1.amazonaws.com/dev/{proxy+}
-3.- Se comparte modelo de base de datos
+# 3.- Se comparte modelo de base de datos
     - Adjunto Archivo dentro de la carpeta documentos
