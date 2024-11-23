@@ -132,5 +132,16 @@ npm install @nestjs/jwt @nestjs/passport passport passport-jwt
 # bilioteca para realizar request a apis
 npm install @nestjs/axios rxjs
 
+```
 
 
+
+```
+# Si estás usando sincronización automática (synchronize: true) en TypeOrmModule, 
+los cambios se aplicarán automáticamente. Sin embargo, en entornos de producción, es recomendable usar migraciones.
+
+npm run typeorm migration:generate -- -n AddRelationsToStarWarsEntity
+npm run typeorm migration:run
+
+
+```

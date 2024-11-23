@@ -3,11 +3,12 @@ import {
   PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
-  UpdateDateColumn,
-} from 'typeorm';
+  UpdateDateColumn, ManyToOne
+} from "typeorm";
+import { PlanetEntity } from "./planets.entity";
 
 @Entity('starwares_people') // Nombre de la tabla en la base de datos
-export class CharacterEntity {
+export class StarWarsEntity {
   @PrimaryGeneratedColumn() // ID auto-generado como clave primaria
   id: number;
 
@@ -58,4 +59,12 @@ export class CharacterEntity {
 
   @Column() // URL del recurso en la API
   url: string;
+
+
+  // Relación con la entidad Planet
+  @ManyToOne(() => PlanetEntity, (planet) => planet.residentsEntities, {
+    nullable: false,
+    onDelete: 'CASCADE',
+  })
+  planet: PlanetEntity;
 }

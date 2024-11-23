@@ -19,7 +19,7 @@ export class PeopleEntity {
 }
 
 
-export class PlanetEntity {
+export class PlanetEntitys {
   name: string;
   rotation_period: string;
   orbital_period: string;

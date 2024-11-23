@@ -25,7 +25,39 @@ export class StarWarsController {
     const params = `?page=${page}`
     return this.starWarsService.getAllPlanets(params);
   }
+  @Get('process-etl')
+  async processEtl(){
+    try {
+      // Obtener listados de peoples
+      const peoplesRaw = await this.starWarsService.getPeople(`?page=1`);
+      // Obtener listados de planets
+      const planets = await this.starWarsService.getAllPlanets(`?page=1`);
+      // Transformar datos de peoples
+      const peoples = peoplesRaw.map((person) => ({
+        ...person,
+        created: new Date(person.created), // Convertir string a Date
+        edited: new Date(person.edited), // Convertir string a Date
+      }));
+      return await this.starWarsService.savePlanetsAndPeoples(planets, peoples);
+    } catch (error) {
+      throw new Error(`Error while saving data: ${error.message}`);
+    }
+  }
 
+  @Get('historial')
+  async getHistorial(
+    @Query('start') start: number=0,
+    @Query('lenght') lenght: number=10,
+    @Query('search') search?: string,
+  ){
+    try {
+      return  await this.starWarsService.getAllWithPlanets(Number(start), Number(lenght), search )
+    } catch (error) {
+      throw new Error(`Error while reading data: ${error.message}`);
+    }
+  }
+
+/*
   @Post()
   createUser(@Body() newUser: CreateUserDto){
     console.log(newUser)
@@ -42,6 +74,6 @@ export class StarWarsController {
   updateUser(@Param('id') id : string, @Body() updateFields: UpdateUserDto) {
     return this.starWarsService.updateUser(id, updateFields)
 
-  }
+  }*/
 
 }
