@@ -172,7 +172,7 @@ serverless remove
 # eliminar los archivos generados prod
 serverless remove --stage prod
 
-sd
+sdsdasd
 
 
 
