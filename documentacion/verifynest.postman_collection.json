@@ -1,0 +1,310 @@
+{
+	"info": {
+		"_postman_id": "962fe5c5-1e79-4f50-b43c-8a85e7ebc88c",
+		"name": "verifynest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2046802"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": \"jeiner\",\n    \"password\": \"root123++\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "validar token",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlciI6ImplaW5lciIsImlhdCI6MTczMjI2MjA2NCwiZXhwIjoxNzMyMjY1NjY0fQ.q7NnWeKwvv3V2t-NQ9tDSRP8qZlr2Pv-V_faohs8n94",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": \"jeiner\",\n    \"password\": \"root123++\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/status",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"status"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "star-wars",
+			"item": [
+				{
+					"name": "peoples",
+					"item": [
+						{
+							"name": "listar all star wars",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}/dev/star-wars/people/?page=2",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"dev",
+										"star-wars",
+										"people",
+										""
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "planetas",
+					"item": [
+						{
+							"name": "list all planetas",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}/star-wars/planets/?page=1",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"star-wars",
+										"planets",
+										""
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "fusionados/process etl",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/star-wars/process-etl",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"star-wars",
+								"process-etl"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "historial",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/star-wars/historial",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"star-wars",
+								"historial"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "lenght",
+									"value": "10",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "JEINER CASTRO",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "almacenar datos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"JEINER CASTRO\",\n  \"height\": \"1.72\",\n  \"mass\": \"77\",\n  \"hair_color\": \"blond\",\n  \"skin_color\": \"fair\",\n  \"eye_color\": \"blue\",\n  \"birth_year\": \"19BBY\",\n  \"gender\": \"male\",\n  \"homeworld\": \"Tatooine\",\n  \"films\": [\"https://swapi.dev/api/films/1/\", \"https://swapi.dev/api/films/2/\"],\n  \"species\": [\"https://swapi.dev/api/species/1/\"],\n  \"vehicles\": [\"https://swapi.dev/api/vehicles/1/\"],\n  \"starships\": [\"https://swapi.dev/api/starships/1/\"],\n  \"url\": \"https://swapi.dev/api/people/1/\",\n  \"planetId\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/star-wars/almacenar",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"star-wars",
+								"almacenar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Apis externas",
+			"item": [
+				{
+					"name": "star wars api",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://swapi.dev/api/people?page=2",
+							"protocol": "https",
+							"host": [
+								"swapi",
+								"dev"
+							],
+							"path": [
+								"api",
+								"people"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "api planets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://swapi.dev/api/planets",
+							"protocol": "https",
+							"host": [
+								"swapi",
+								"dev"
+							],
+							"path": [
+								"api",
+								"planets"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "test",
+			"item": [
+				{
+					"name": "ruta principal",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/star-wars/historial",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"star-wars",
+								"historial"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "test",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
