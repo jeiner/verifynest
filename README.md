@@ -145,3 +145,17 @@ npm run typeorm migration:run
 
 
 ```
+
+
+
+primer paso crear usuario en iam
+```
+#instalar de manera global serverless
+
+npm install -g serverless@latest
+
+#para ver la version que tenemos instalado de serverless
+
+serverless --version
+
+```
