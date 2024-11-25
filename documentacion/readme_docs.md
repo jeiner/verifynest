@@ -36,7 +36,7 @@
         https://0dqtcdtx2c.execute-api.us-east-1.amazonaws.com
         
 # 3.- Se comparte modelo de base de datos
-    - Adjunto Archivo dentro de la carpeta documentos
+![modelo_base_datos.png](modelo_base_datos.png)
 
 
 # 4.- Consideraciones:
