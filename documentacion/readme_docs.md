@@ -29,16 +29,34 @@
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
 
-# 1.- Se comparte la colleccion 
+# 1.- Se comparte la colleccion de las Apis en Postman
     - Adjunto Archivo dentro de la carpeta documentos
 # 2.- Se comparte los endpoints desplegados mediante aws serverless framework
-    endpoints:
-        ANY - https://779ljk89s9.execute-api.us-east-1.amazonaws.com/dev/
-        ANY - https://779ljk89s9.execute-api.us-east-1.amazonaws.com/dev/{proxy+}
+    endpoints (URL Base):
+        https://0dqtcdtx2c.execute-api.us-east-1.amazonaws.com
+        
 # 3.- Se comparte modelo de base de datos
     - Adjunto Archivo dentro de la carpeta documentos
 
 
 # 4.- Consideraciones:
     - La rama principal desplegada en lambda es main
+
+
+# Evidencia Api fucionados:
+
+![img.png](img.png)
+
+
+# Evidencia Almacen Datos:
+
+
+![img_1.png](img_1.png)
+
+
+# Evidencia Historial:
+
+
+![img_2.png](img_2.png)
+
 

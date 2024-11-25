@@ -14,6 +14,8 @@ dotenv.config();
   imports: [
     ConfigModule.forRoot({
       isGlobal: true, // Hace que las variables de entorno estén disponibles en toda la aplicación
+      envFilePath: process.env.NODE_ENV === 'production' ? '.env.prod' : '.env', // Selección del archivo según el entorno
+
     }),
     TypeOrmModule.forRoot({
       type: 'postgres', // Tipo de base de datos (PostgreSQL en este caso)
